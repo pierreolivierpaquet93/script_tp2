@@ -35,20 +35,39 @@ def test_instrument():
 
 # ------------------------------------------------------------------------------
 def test_porte():
-	porte = por.Porte()
-	porte.afficher_etat()
-	porte.ouvrir()
-	porte.afficher_etat()
-	porte.fermer()
-	porte.afficher_etat()
+	#porte = por.Porte()
+	#porte.afficher_etat()
+	#porte.ouvrir()
+	#porte.afficher_etat()
+	#porte.fermer()
+	#porte.afficher_etat()
+
+	#porte_code = por.PorteCode( "12345" )
+	#porte_code.afficher_etat()
+	#porte_code.ouvrir()
+	#porte_code.afficher_etat()
+	#porte_code.ouvrir_avec_code("12344")
+	#porte_code.afficher_etat()
+	#porte_code.ouvrir_avec_code("12345")
+	#porte_code.afficher_etat()
+
+	porte_verrou = por.PorteVerrou()
+	porte_verrou.afficher_etat()
+	porte_verrou.ouvrir()
+	porte_verrou.afficher_etat()
+	porte_verrou.deverouiller()
+	porte_verrou.ouvrir()
+	porte_verrou.afficher_etat()
+	porte_verrou.fermer()
+	porte_verrou.afficher_etat()
 
 # --------------------------------------------------------------------- [ MAIN ]
 
 def main():
 	#test_utils()
 	#test_media()
-	test_instrument()
-	#test_porte()
+	#test_instrument()
+	test_porte()
 
 if __name__ == "__main__":
     main()
