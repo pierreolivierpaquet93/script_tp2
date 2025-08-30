@@ -3,7 +3,7 @@ def repeter_mot(
 	n: int
 ) -> None:
 	while n > 0:
-		print( mot )
+		print( mot, end="" )
 		n -= 1
 	return
 
