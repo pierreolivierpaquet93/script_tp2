@@ -6,7 +6,7 @@ class Porte():
 		self.__state: tuple[bool,str] = Porte.DOOR_CLOSED
 
 	def ouvrir( self ) -> None:
-		self.__state =  Porte.DOOR_OPENED
+		self.__state = Porte.DOOR_OPENED
 	
 	def fermer( self ) -> None:
 		self.__state = Porte.DOOR_CLOSED

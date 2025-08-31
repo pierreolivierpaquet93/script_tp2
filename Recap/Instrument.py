@@ -22,6 +22,7 @@ class Piano( Instrument ):
 
 	def jouer( self ):
 		repeter_mot( Piano.sons[0], self._n_touche )
+		print( "" )
 
 class Batterie( Instrument ):
 	sons: list[str] = ["Boom","Tink"]
