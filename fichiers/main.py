@@ -1,22 +1,22 @@
-import Fichiers as fi
+import RecipeCalculator as rc
+from os import path
+
+# https://stackoverflow.com/questions/595305/how-do-i-get-the-path-of-the-python-script-i-am-running-in
 
 # -------------------------------------------------------------------- [ FILES ]
 
-CURRENT_DIR = "./"
-
 PRICE_FILENAME = "Prix.txt"
-PRICE_FILE = f"{CURRENT_DIR}{PRICE_FILENAME}"
-
 RECIPE_FILENAME = "Recette.txt"
-RECIPE_FILE = f"{CURRENT_DIR}{RECIPE_FILENAME}"
-
-RECIPE_PRICE_FILENAME = "RecetteWithPrice.txt"
-RECIPE_PRICE_FILE = f"{CURRENT_DIR}{RECIPE_PRICE_FILENAME}"
 
 # --------------------------------------------------------------------- [ MAIN ]
 
 def main():
-	pass
+
+	current_dir = ( path.dirname( __file__ ) )
+	prix_abspath = f"{current_dir}\\{PRICE_FILENAME}"
+	recipe_abspath = f"{current_dir}\\{RECIPE_FILENAME}"
+
+	test = rc.RecipeCalculator( prix_abspath, recipe_abspath )	
 
 if __name__ == "__main__":
 	main()
