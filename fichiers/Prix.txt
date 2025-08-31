@@ -1,0 +1,14 @@
+--- Prix $ par unité ---
+Farine:0.0075
+Lait:0.001
+Oeufs:0.25
+Sucre:0.01
+Beurre:0.02
+Laitue:0.99
+Poulet:0.008
+Croutons:0.004
+Parmesan:0.008
+Sauce César:0.004
+Oignons:0.03
+Tomates:0.02
+Sel:0.0001

@@ -1,0 +1,33 @@
+--- Pancakes ---
+Farine:200
+Lait:250
+Oeufs:2
+Sucre:30
+Beurre:50
+
+--- Salade César ---
+Laitue:1
+Poulet:150
+Croutons:50
+Parmesan:40
+Sauce César:60
+
+--- Omelette ---
+Oeufs:4
+Lait:100
+Beurre:20
+Sel:5
+
+--- Gaufres ---
+Farine:180
+Lait:220
+Oeufs:3
+Sucre:40
+Beurre:60
+
+--- Soupe de légumes ---
+Laitue:0.5
+Oignons:45.5
+Tomates:85.5
+Sel:8.5
+Beurre:20.5
