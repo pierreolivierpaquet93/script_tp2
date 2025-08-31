@@ -27,6 +27,9 @@ def display_number( n: float ):
 		return int( n )
 	return n
 
+def round_number( n: float ):
+	return int(n*100)/100
+
 class RecipeCalculator():
 	def __init__(
 		self,
@@ -58,7 +61,7 @@ class RecipeCalculator():
 			f"{os.path.dirname( self._path_recette )}\\" + 
 			f"{RECIPEWPRICE_FILENAME}"
 		)
-		print( self._path_recipe_with_price )
+
 		with open( self._path_recipe_with_price, 'w' ) as f:
 			for recipe in self._recette:
 				total = 0
@@ -70,4 +73,8 @@ class RecipeCalculator():
 						str( display_number(self._recette[recipe][item]))
 						+ "\n"
 					)
-					
+					total += (
+						self._recette[recipe][item] *
+						self._liste_de_prix[item]
+					)
+				f.write(f"-> Total Cost: {round_number(total)}$\n\n")
