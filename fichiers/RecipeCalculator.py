@@ -1,7 +1,17 @@
 import os
 
+# ---------------------------------------------------------------------- [ DOC ]
+
+# https://stackoverflow.com/questions/14538885/how-to-get-the-index-with-the-key-in-a-dictionary
+# https://stackoverflow.com/questions/33945261/how-to-specify-multiple-return-types-using-type-hints
+
+# --------------------------------------------------------------- [ CONSTANT.S ]
+
 RECIPEWPRICE_FILENAME = "RecetteWithPrice.txt"
 SEP = ':'
+TOTAL_PROMPT = "-> Total Cost: "
+
+# ------------------------------------------------------------------------------
 
 def locate(
 	haystack: str,
@@ -20,7 +30,7 @@ def locate(
 		i += 1
 	return -1
 
-def display_number( n: float ):
+def display_number( n: float ) -> int | float:
 	cast_before: int = int( int(n) * 100 )
 	cast_after: int = int( n * 100 )
 	if cast_before == cast_after:
@@ -40,13 +50,18 @@ class RecipeCalculator():
 		self._path_recette = recette
 		self._liste_de_prix: dict[str:float] = {}
 		self._recette: dict[str,dict[str,float]] = {}
+		self.upload_price_list()
+		self.upload_recipe()
+		self.generate_cost()
 
+	def upload_price_list( self ):
 		with open( self._path_liste_de_prix, 'r' ) as f:
 			for line in f:
 				if locate( line, SEP ) >= 0:
 					tmp = line.split( ':', 2 )
 					self._liste_de_prix[tmp[0]] = float( tmp[1] )
-
+				
+	def upload_recipe( self ):
 		with open( self._path_recette, 'r' ) as f:
 			current_recipe = ""
 			for line in f:
@@ -56,13 +71,14 @@ class RecipeCalculator():
 				if locate( line, ':' ) >= 0:
 					tmp = line.split( ':', 2 )
 					self._recette[current_recipe][tmp[0]] = float( tmp[1] )
-		
+	
+	def generate_cost( self ):
 		self._path_recipe_with_price = (
 			f"{os.path.dirname( self._path_recette )}\\" + 
 			f"{RECIPEWPRICE_FILENAME}"
 		)
-
 		with open( self._path_recipe_with_price, 'w' ) as f:
+			n_recipe: int = len(self._recette)
 			for recipe in self._recette:
 				total = 0
 				f.write( recipe )
@@ -77,4 +93,6 @@ class RecipeCalculator():
 						self._recette[recipe][item] *
 						self._liste_de_prix[item]
 					)
-				f.write(f"-> Total Cost: {round_number(total)}$\n\n")
+				f.write(f"{TOTAL_PROMPT}{round_number(total)}$")
+				if list(self._recette).index(recipe) != n_recipe - 1:
+					f.write("\n\n")
