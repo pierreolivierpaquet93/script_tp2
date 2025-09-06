@@ -3,7 +3,6 @@ import re
 # ---------------------------------------------------------------------- [ DOC ]
 
 # https://stackoverflow.com/questions/1034573/most-idiomatic-way-to-convert-none-to-empty-string
-# https://www.canadapost-postescanada.ca/cpc/en/support/articles/addressing-guidelines/postal-codes.page
 
 # ------------------------------------------------------------------------------
 
