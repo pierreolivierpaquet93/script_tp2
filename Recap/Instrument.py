@@ -1,4 +1,12 @@
-from utils import repeter_mot
+
+def print_n(
+	mot: str,
+	n: int
+) -> None:
+	while n > 0:
+		print( mot, end="" )
+		n -= 1
+	return
 
 class Instrument():
 	def __init__(
@@ -21,7 +29,7 @@ class Piano( Instrument ):
 		self._n_touche: int = n_touche
 
 	def jouer( self ):
-		repeter_mot( Piano.sons[0], self._n_touche )
+		print_n( Piano.sons[0], self._n_touche )
 		print( "" )
 
 class Batterie( Instrument ):

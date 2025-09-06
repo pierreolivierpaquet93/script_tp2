@@ -2,10 +2,11 @@ def repeter_mot(
 	mot: str,
 	n: int
 ) -> None:
+	res = ""
 	while n > 0:
-		print( mot, end="" )
+		res += mot
 		n -= 1
-	return
+	return res
 
 def somme_liste( numbers: list[int] ) -> int:
 	sum = 0

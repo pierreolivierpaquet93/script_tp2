@@ -35,7 +35,7 @@ class PorteCode(Porte):
 		self,
 		code: str
 	):
-		if self.checkCode( code ) == True:
+		if self.checkCode( code ):
 			super().ouvrir()
 
 class PorteVerrou(Porte):
@@ -50,6 +50,6 @@ class PorteVerrou(Porte):
 		self.__locked = True
 
 	def ouvrir( self ):
-		if self.__locked == False:
+		if not self.__locked:
 			super().ouvrir()
 	

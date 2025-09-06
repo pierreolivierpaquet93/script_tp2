@@ -37,11 +37,11 @@ def banner(
 def test_utils():
 	print( test_title( "TEST_UTILS" ) )
 	print( banner('repeter_mot( "bonjour", 0 )', RED) )
-	ut.repeter_mot( "Bonjour", 0)
+	print( ut.repeter_mot( "Bonjour", 0) )
 	print( banner('repeter_mot( "Impossible", -1 )', RED) )
-	ut.repeter_mot( "Impossible", -1 )
+	print( ut.repeter_mot( "Impossible", -1 ) )
 	print( banner('repeter_mot( "Répéter\\n", 3 )', GRN) )
-	ut.repeter_mot( "Répéter\n", 3 )
+	print( ut.repeter_mot( "Répéter\n", 3 ) )
 	
 	print( banner( 'somme_liste( [-1, 2 ,3, 4] )', GRN) )
 	numbers: list[int] = [-1, 2, 3, 4]
