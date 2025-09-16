@@ -3,6 +3,11 @@ import json
 import csv
 import xml.etree.ElementTree as ET 
 
+# -----------------------------------------------------------------------[ DOC ]
+
+# https://www.geeksforgeeks.org/python/how-to-convert-lists-to-xml-in-python/
+# https://stackoverflow.com/questions/16823695/how-to-use-delimiter-for-csv-in-python
+
 # ----------------------------------------------------------------[ CONSTANT.S ]
 
 EXT_JSON = ".json"
@@ -18,8 +23,11 @@ OUTPUT_JSON = f"{OUTPUT_FILENAME}{EXT_JSON}"
 OUTPUT_XML = f"{OUTPUT_FILENAME}{EXT_XML}"
 OUTPUT_CSV = f"{OUTPUT_FILENAME}{EXT_CSV}"
 
-BLU = "\033[1;34m"
-RST = "\033[0m"
+ESC = "\033["
+ORN = f"{ESC}1;33m"
+GRN = f"{ESC}1;32m"
+BLU = f"{ESC}1;34m"
+RST = f"{ESC}0m"
 
 FIELD_NAME = "Name"
 FIELD_MODEL = "Model"
@@ -69,6 +77,7 @@ class MyJson():
 			with open( filepath, 'r' ) as f:
 				self._raw_content: str = f.read()
 				self._parsed = json.loads( self._raw_content )
+			print( f"{ORN}[ OK ] {os.path.basename(filepath)} :: loaded.{RST}" )
 
 	def GetParsed( self ):
 		return self._parsed
@@ -87,6 +96,7 @@ class MyXml():
 			with open( filepath, 'r' ) as f:
 				self._raw_content = f.read()
 				self._root = ET.fromstring( self._raw_content )
+			print( f"{ORN}[ OK ] {os.path.basename(filepath)} :: loaded.{RST}" )
 
 	def GetRoot( self ):
 		return self._root
@@ -122,6 +132,7 @@ class Enonce():
 				ram
 			)
 			self._computers.append( tmp )
+		print( f"{BLU}[ OK ] {INPUT_XML} :: imported.{RST}" )
 
 	def AddFromJson(
 		self,
@@ -141,6 +152,7 @@ class Enonce():
 				ram
 			)
 			self._computers.append( tmp )
+		print( f"{BLU}[ OK ] {INPUT_JSON} :: imported.{RST}" )
 
 	def OutputJson( self ):
 		computer_lst: list[dict] = []
@@ -154,6 +166,7 @@ class Enonce():
 			computer_lst.append( computer_dict )
 		with open( self._path + OUTPUT_JSON, 'w' ) as f:
 			computer_json_str = json.dump( computer_lst, f, indent=4 )
+		print( f"{GRN}[ OK ] {OUTPUT_JSON}{RST}" )
 
 	def OutputXml( self ):
 		root_computers = ET.Element( "Computers" )
@@ -167,29 +180,50 @@ class Enonce():
 			sub_computer_cpu.text = computer.GetCpu()
 			sub_computer_ram = ET.SubElement( sub_computer, FIELD_RAM )
 			sub_computer_ram.text = str(computer.GetRam())
-			ET.indent( root_computers )
-			tree_computers = ET.ElementTree( root_computers )
-			tree_computers.write(
-				self._path + OUTPUT_XML,
-				encoding="utf-8",
-				xml_declaration=True
-			)
+		ET.indent( root_computers )
+		tree_computers = ET.ElementTree( root_computers )
+		tree_computers.write(
+			self._path + OUTPUT_XML,
+			encoding="utf-8",
+			xml_declaration=True
+		)
+		print( f"{GRN}[ OK ] {OUTPUT_XML}{RST}" )
 
 	def OutputCsv( self ):
-		pass
+		computer_data: list[list[str]] = [
+			[FIELD_NAME,FIELD_MODEL,FIELD_CPU,FIELD_RAM]
+		]
+		for computer in self._computers:
+			computer_spec = [
+				computer.GetName(),
+				computer.GetModel(),
+				computer.GetCpu(),
+				str( computer.GetRam() )
+			]
+			computer_data.append( computer_spec )
+		with open( self._path + OUTPUT_CSV, 'w', newline='' ) as f:
+			writer = csv.writer( f, delimiter=';' )
+			writer.writerows( computer_data )
+		print( f"{GRN}[ OK ] {OUTPUT_CSV}{RST}" )
+
+	def OutputAllFormats( self ):
+		self.OutputJson()
+		self.OutputXml()
+		self.OutputCsv()
 
 # ----------------------------------------------------------------------[ MAIN ]
 
 def main():
 	path = os.path.dirname(__file__) + '\\'
+
 	input_json = MyJson( path + INPUT_JSON )
 	input_xml = MyXml( path + INPUT_XML )
+
 	travail_pratique = Enonce(
 		input_json,
 		input_xml
 	)
-	travail_pratique.OutputJson()
-	travail_pratique.OutputXml()
+	travail_pratique.OutputAllFormats()
 
 if __name__ == "__main__":
 	main()
