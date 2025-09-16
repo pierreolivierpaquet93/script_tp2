@@ -1,0 +1,38 @@
+[
+	{
+		"Name": "PC-01",
+		"Model": "Model-1001",
+		"CPU": "Intel i7",
+		"RAM_GB": 16
+	},
+	{
+		"Name": "PC-02",
+		"Model": "Model-1002",
+		"CPU": "AMD Ryzen 5",
+		"RAM_GB": 8
+	},
+	{
+		"Name": "PC-03",
+		"Model": "Model-1003",
+		"CPU": "Intel i7",
+		"RAM_GB": 32
+	},
+	{
+		"Name": "PC-04",
+		"Model": "Model-1004",
+		"CPU": "AMD Ryzen 5",
+		"RAM_GB": 16
+	},
+	{
+		"Name": "PC-05",
+		"Model": "Model-1005",
+		"CPU": "Intel i9",
+		"RAM_GB": 64
+	},
+	{
+		"Name": "PC-06",
+		"Model": "Model-1006",
+		"CPU": "AMD Ryzen 7",
+		"RAM_GB": 32
+	}
+]

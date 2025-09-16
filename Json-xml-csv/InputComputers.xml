@@ -1,0 +1,39 @@
+<Computers>
+    <Computer>
+        <Name>PC-07</Name>
+        <Model>Model-1007</Model>
+        <CPU>Intel i5</CPU>
+        <RAM_GB>8</RAM_GB>
+        <Storage_GB>512</Storage_GB>
+    </Computer>
+    <Computer>
+        <Name>PC-08</Name>
+        <Model>Model-1008</Model>
+        <CPU>Intel i7</CPU>
+        <RAM_GB>16</RAM_GB>
+    </Computer>
+    <Computer>
+        <Name>PC-09</Name>
+        <Model>Model-1009</Model>
+        <CPU>AMD Ryzen 9</CPU>
+        <RAM_GB>64</RAM_GB>
+    </Computer>
+    <Computer>
+        <Name>PC-10</Name>
+        <Model>Model-1010</Model>
+        <CPU>Intel i5</CPU>
+        <RAM_GB>8</RAM_GB>
+    </Computer>
+    <Computer>
+        <Name>PC-11</Name>
+        <Model>Model-1011</Model>
+        <CPU>Intel i7</CPU>
+        <RAM_GB>16</RAM_GB>
+    </Computer>
+    <Computer>
+        <Name>PC-12</Name>
+        <Model>Model-1012</Model>
+        <CPU>AMD Ryzen 7</CPU>
+        <RAM_GB>32</RAM_GB>
+    </Computer>
+</Computers>
